@@ -2,6 +2,7 @@
 <html lang="es" class="land">
 <head>
 <meta charset="utf-8">
+<meta name="build" content="6ae59f40">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Keke Run</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
@@ -69,6 +70,14 @@ html.night .ov{background:rgba(16,21,33,.62)}
 .hb{position:absolute;top:10px;left:10px;width:44px;height:44px;padding:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:rgba(255,241,208,.92);box-shadow:0 3px 0 #b9794a}
 .hb i{display:block;width:22px;height:3px;border-radius:2px;background:#4a2418}
 #menu.hide+.hb{display:none}
+.umsg{position:absolute;top:62px;left:64px;right:14px;margin:0 auto;width:fit-content;max-width:calc(100% - 78px);background:rgba(150,30,40,.92);color:#fff;border-radius:12px;padding:6px 14px;font-size:15px;text-align:center}
+.tl{width:290px;max-height:46%;overflow-y:auto;display:flex;flex-direction:column;gap:5px}
+html.land .tl{width:380px;max-height:52%}
+.trow{display:flex;gap:8px;align-items:center;background:rgba(255,241,208,.14);border-radius:12px;padding:6px 12px;font-size:16px;text-align:left}
+.trow.me{background:rgba(255,211,106,.28);box-shadow:inset 0 0 0 2px #ffd36a}
+.trow b{min-width:34px}
+.trow span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trow em{font-style:normal;font-weight:700}
 .code{font:700 26px monospace;letter-spacing:2px;background:rgba(0,0,0,.28);border-radius:12px;padding:8px 14px;color:#ffd36a}
 html.land #splash .logo{transform:scale(.95)}
 .gp button:focus,.gp input:focus{outline:3px solid #fff;outline-offset:3px}
@@ -90,10 +99,10 @@ textarea{width:290px;height:84px;border-radius:12px;border:2px solid #fff1d0;bac
 <button class="pb hide" id="pb" aria-label="Pausar"><svg width="18" height="18" viewBox="0 0 18 18"><rect x="3" y="2" width="4" height="14" rx="1.5" fill="#4a2418"/><rect x="11" y="2" width="4" height="14" rx="1.5" fill="#4a2418"/></svg></button>
 <div class="ov hide" id="menu">
 <h1 class="logo"><svg viewBox="0 0 40 44" width="46" height="50"><path d="M20 14 C24 6 30 4 34 2" fill="none" stroke="#3f7a3a" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="30" r="12" fill="#e0243c" stroke="#4a2418" stroke-width="3"/><circle cx="12" cy="26" r="3" fill="#fff" opacity=".6"/></svg><span class="k">Keke</span><span class="r">Run</span></h1>
-<div class="urow" id="urow"><input class="uin" id="uin" maxlength="14" placeholder="Username" aria-label="Nombre de usuario" autocomplete="off" spellcheck="false"><button class="sec" id="uok">Confirmar</button></div><button class="sec ushow" id="ushow" hidden></button>
+<div class="urow" id="urow"><input class="uin" id="uin" maxlength="14" placeholder="Username" aria-label="Nombre de usuario" autocomplete="off" spellcheck="false"><button class="sec" id="uok">Confirmar</button></div><button class="sec ushow" id="ushow" hidden></button><div class="umsg" id="umsg" role="alert" hidden></div>
 <p>Corre con Keke, esquiva los cubiertos y junta cerezas.</p>
 <button id="go">Jugar</button>
-<div class="row"><button class="sec" id="bm">Misiones</button><button class="sec" id="bs">Skins</button><button class="sec" id="bo">Opciones</button></div>
+<div class="row"><button class="sec" id="bm">Misiones</button><button class="sec" id="bs">Skins</button><button class="sec" id="btop">Top Score</button><button class="sec" id="bo">Opciones</button></div>
 <p>Flechas o deslizar: ← → cambian de carril, ↑ salta, ↓ se desliza. Con mando: cruceta o palanca, A salta, Start pausa.</p>
 </div>
 <button class="hb" id="hb" aria-label="Mi código"><i></i><i></i><i></i></button>
@@ -105,7 +114,8 @@ textarea{width:290px;height:84px;border-radius:12px;border:2px solid #fff1d0;bac
 <div class="ov hide" id="opt"><h2>Opciones</h2><button id="sn">Sonido</button><button id="vi">Vista</button><button class="sec" id="ob">Volver</button></div>
 <div class="ov hide" id="snd"><h2>Sonido</h2><label class="vol"><span>🎵 Música</span><input type="range" id="vol" min="0" max="100" aria-label="Volumen de la música"></label><label class="vol"><span>🔔 Efectos</span><input type="range" id="fxs" min="0" max="100" aria-label="Volumen de efectos"></label><button class="sec" id="sdb">Volver</button></div>
 <div class="ov hide" id="vw"><h2>Vista</h2><p>Orientación</p><div class="row"><button class="sec" id="vh">Horizontal</button><button class="sec" id="vv">Vertical</button></div><p>Apariencia</p><div class="row"><button class="sec" id="td">Por Defecto</button><button class="sec" id="tn">Modo Nocturno</button></div><button class="sec" id="vb">Volver</button></div>
-<div class="ov hide" id="acc"><h2>Mi código</h2><p>Úsalo en otro dispositivo para mantener tu progreso.</p><div class="row"><div class="code" id="code">-</div><button class="sec" id="ccp">Copiar</button></div><p>¿Ya tienes un código? Escríbelo aquí.</p><div class="row"><input class="uin" id="cin" maxlength="12" placeholder="XXXXX-XXXXX" aria-label="Código de progreso" autocomplete="off" spellcheck="false"><button class="sec" id="cld">Cargar</button></div><p id="cmsg"></p><button class="sec" id="cb">Volver</button></div>
+<div class="ov hide" id="acc"><h2>Mi código</h2><p>Úsalo en otro dispositivo para mantener tu progreso.</p><div class="row"><div class="code" id="code">-</div><button class="sec" id="ccp">Copiar</button></div><p>¿Ya tienes un código? Escríbelo aquí.</p><div class="row"><input class="uin" id="cin" maxlength="18" placeholder="XXXXX-XXXXX-XXXXX" aria-label="Código de progreso" autocomplete="off" spellcheck="false"><button class="sec" id="cld">Cargar</button></div><p id="cmsg"></p><button class="sec" id="cb">Volver</button></div>
+<div class="ov hide" id="top"><h2>Top Score</h2><div class="tl" id="tl"></div><p id="tmsg"></p><button class="sec" id="tb">Volver</button></div>
 <div class="ov hide" id="pause"><h2>Pausa</h2><button id="pr">Seguir</button><div class="row"><button class="sec" id="pm">Misiones</button><button class="sec" id="ps">Skins</button><button class="sec" id="po">Opciones</button></div><button class="sec" id="pq">Salir al menú</button></div>
 <div class="ov hide" id="miss"><h2>Misiones</h2><div id="ml"></div><button id="mb">Volver</button></div>
 <div class="ov hide" id="skins"><h2>Skins</h2><div id="sl" class="row"></div><button id="sb">Volver</button></div>
@@ -131,7 +141,7 @@ function Q(d1,d2,a,b,col){ctx.fillStyle=col;ctx.beginPath();
 function reset(){skate=doneM>=2;inv=0;hard=false;banner=0;paused=false;cd=0;objs=[];trav=0;speed=650;score=0;cher=0;lane=0;px=0;jh=0;vy=0;slide=0;tm=0;nextD=500;state='play'}
 function crash(){state='over';shake=.4;hide('pb');
  if(score>best){best=score;try{localStorage.setItem('kekeBest',best)}catch(e){}}
- sv();let msg='Total de cerezas: '+tot;
+ sv();submitScore();let msg='Total de cerezas: '+tot;
  if(doneM<OPEN&&tot>=MS[doneM]){doneM++;sv();msg='¡Misión '+doneM+' completada! '+(doneM<2?'Desbloqueaste la skin Keke azul.':'Desbloqueaste el skate.')}
  setTimeout(()=>{$('res').textContent='Puntos: '+score+'  Cerezas: '+cher+'  Mejor: '+best;$('msg').textContent=msg;
   document.getElementById('over').classList.remove('hide');sfx('lose')},450)}
@@ -318,7 +328,7 @@ function sfx(n,x){
  case 'jump':air(t,.3,350,2600,.6,0);break;
  case 'lose':[392,330,262,196].forEach((f,i)=>tone(f,t+i*.16,.4,{type:'triangle',v:.28,to:f*.94}));break}}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;
- const m={go:'start',again:'start',mb:'back',sb:'back',pbk:'back',tomenu:'back',pq:'back',ob:'back',sdb:'back',vb:'back',bo:'open',po:'open',sn:'open',vi:'open',vh:'select',vv:'select',td:'select',tn:'select',bm:'open',bs:'open',hb:'open',cb:'back',pm:'open',ps:'open'};
+ const m={go:'start',again:'start',mb:'back',sb:'back',pbk:'back',tomenu:'back',pq:'back',ob:'back',sdb:'back',vb:'back',bo:'open',po:'open',sn:'open',vi:'open',vh:'select',vv:'select',td:'select',tn:'select',bm:'open',bs:'open',hb:'open',cb:'back',btop:'open',tb:'back',pm:'open',ps:'open'};
  if(b.id==='pb')return;sfx(b.dataset.p?'select':(m[b.id]||'tap'))});
 $('fxs').value=fx;
 $('fxs').oninput=e=>{fx=+e.target.value;if(SG)SG.gain.value=fx/100;try{localStorage.setItem('kekeSfx',fx)}catch(x){}const n=performance.now();if(n-lastTick>60){lastTick=n;sfx('tick',400+fx*8)}};
@@ -415,34 +425,73 @@ function gpPoll(){
  const nx=isR?ed.down:(ed.right||ed.down),pv=isR?ed.up:(ed.left||ed.up);
  if(nx&&i<it.length-1)it[i+1].focus();else if(pv&&i>0)it[i-1].focus();
  if(ed.a&&!isR)cur.click();
- if(ed.b){const bk=ov.querySelector('#mb,#sb,#cb,#ob,#sdb,#vb');if(bk)bk.click()}}
+ if(ed.b){const bk=ov.querySelector('#mb,#sb,#cb,#ob,#sdb,#vb,#tb');if(bk)bk.click()}}
 const sp=$('splash'),go0=()=>{sfx('splash');hide('splash');show('menu');if(view==='h'&&innerHeight>innerWidth)toast('📱 Gira el teléfono para jugar en horizontal',3500)};
 sp.onclick=go0;sp.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go0()}};sp.focus();
 $('vol').oninput=e=>{vol=+e.target.value;mus.volume=vol/100;try{localStorage.setItem('kekeVol',vol)}catch(x){}musTick()};
-const CK='0123456789ABCDEFGHJKMNPQRSTVWXYZ',chk=(t,b,d,k)=>(t*7+b*13+d*5+k*3+11)%32;
-function makeCode(){const t=Math.min(tot,2097151),b=Math.min(best,1048575),d=Math.min(doneM,7),k=skin==='azul'?1:0;
- let v=(((t*1048576+b)*8+d)*2+k)*32+chk(t,b,d,k),s='';for(let i=0;i<10;i++){s=CK[v%32]+s;v=Math.floor(v/32)}return s.slice(0,5)+'-'+s.slice(5)}
-function readCode(str){const s=str.toUpperCase().replace(/O/g,'0').replace(/[IL]/g,'1').replace(/[^0-9A-Z]/g,'');if(s.length!==10)return null;
- let v=0;for(const c of s){const i=CK.indexOf(c);if(i<0)return null;v=v*32+i}
+const CK='0123456789ABCDEFGHJKMNPQRSTVWXYZ',chk=(t,b,d,k,p)=>(t*7+b*13+d*5+k*3+p*11+11)%32,pn=s=>[...s].reduce((a,c)=>a*32+CK.indexOf(c),0);
+function myPid(){let p='';try{p=localStorage.getItem('kekePid')||''}catch(e){}
+ if(!/^[0-9A-HJKMNP-TV-Z]{5}$/.test(p)){const a=new Uint8Array(5);if(window.crypto&&crypto.getRandomValues)crypto.getRandomValues(a);else a.forEach((_,i)=>a[i]=Math.random()*256);p=[...a].map(x=>CK[x%32]).join('');try{localStorage.setItem('kekePid',p)}catch(e){}}return p}
+function makeCode(){const t=Math.min(tot,2097151),b=Math.min(best,1048575),d=Math.min(doneM,7),k=skin==='azul'?1:0,pid=myPid();
+ let v=(((t*1048576+b)*8+d)*2+k)*32+chk(t,b,d,k,pn(pid)),s='';for(let i=0;i<10;i++){s=CK[v%32]+s;v=Math.floor(v/32)}return s.slice(0,5)+'-'+s.slice(5)+'-'+pid}
+function readCode(str){const s=str.toUpperCase().replace(/O/g,'0').replace(/[IL]/g,'1').replace(/[^0-9A-Z]/g,'');if(s.length!==10&&s.length!==15)return null;
+ const pid=s.length===15?s.slice(10):'';let v=0;for(const c of s.slice(0,10)){const i=CK.indexOf(c);if(i<0)return null;v=v*32+i}
+ if(pid&&[...pid].some(c=>CK.indexOf(c)<0))return null;
  const c=v%32;v=Math.floor(v/32);const k=v%2;v=Math.floor(v/2);const d=v%8;v=Math.floor(v/8);const b=v%1048576,t=Math.floor(v/1048576);
- return chk(t,b,d,k)===c?{t,b,d,k}:null}
+ return chk(t,b,d,k,pid?pn(pid):0)===c?{t,b,d,k,pid}:null}
 $('hb').onclick=()=>{$('code').textContent=makeCode();$('cmsg').textContent='';$('cin').value='';hide('menu');show('acc')};
 $('cb').onclick=()=>{hide('acc');show('menu')};
 $('ccp').onclick=async()=>{const c=$('code').textContent;try{await navigator.clipboard.writeText(c);$('cmsg').textContent='Código copiado.';sfx('ding')}catch(e){$('cmsg').textContent='Anótalo: '+c}};
-$('cld').onclick=()=>{const r=readCode($('cin').value);
+$('cld').onclick=async()=>{const r=readCode($('cin').value);
  if(!r){$('cmsg').textContent='Ese código no es válido.';sfx('nope');return}
  tot=Math.max(tot,r.t);best=Math.max(best,r.b);doneM=Math.min(OPEN,Math.max(doneM,r.d));if(r.k&&doneM>=1)skin='azul';
+ if(r.pid&&r.pid!==myPid()){if(API&&uname){try{const ok=encodeURIComponent(keyOf(uname)),c=await rtdb('players/'+ok);if(c&&c.pid===myPid())await rtdb('players/'+ok,'DELETE')}catch(e){}}try{localStorage.setItem('kekePid',r.pid)}catch(e){}}
  sv();try{localStorage.setItem('kekeBest',best)}catch(e){}
- $('code').textContent=makeCode();$('cmsg').textContent='Listo: progreso cargado ('+tot+' cerezas).';sfx('ding')};
+ $('code').textContent=makeCode();$('cmsg').textContent='Listo: progreso cargado ('+tot+' cerezas).';sfx('ding');
+ if(uname&&API){const st=await claim(uname);if(st==='taken'){uname='';try{localStorage.removeItem('kekeName')}catch(e){}renderU();$('cmsg').textContent+=' Tu nombre ya está en uso, elige otro.'}}};
 $('cin').onkeydown=e=>{if(e.key==='Enter')$('cld').click()};
+const API='';
+const keyOf=n=>n.toLowerCase().replace(/[.$#\[\]\/\x00-\x1f]/g,'_');
+async function rtdb(path,method,body,q){const r=await fetch(API+'/'+path+'.json'+(q||''),{method:method||'GET',cache:'no-store',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(r.status);return r.json()}
+async function claim(name){if(!API)return 'ok';
+ try{const k=encodeURIComponent(keyOf(name)),cur=await rtdb('players/'+k);
+  if(cur&&cur.pid!==myPid())return 'taken';
+  await rtdb('players/'+k,'PUT',{n:name,pid:myPid(),score:Math.max(best,cur&&cur.score||0),t:Date.now()});return 'ok'}
+ catch(e){return 'err'}}
+async function submitScore(){if(!API||!uname)return;
+ try{const k=encodeURIComponent(keyOf(uname)),cur=await rtdb('players/'+k);
+  if(cur&&cur.pid!==myPid())return;
+  if(!cur||best>(cur.score||0))await rtdb('players/'+k,'PUT',{n:uname,pid:myPid(),score:best,t:Date.now()})}catch(e){}}
 let uname='',uedit=false;try{uname=localStorage.getItem('kekeName')||''}catch(e){}
 function renderU(){const ed=!uname||uedit;$('urow').hidden=!ed;$('ushow').hidden=ed;$('ushow').textContent='👤 '+uname}
-$('uok').onclick=()=>{const v=$('uin').value.trim().slice(0,14);
+function setUmsg(t){const m=$('umsg');m.textContent=t;m.hidden=false;clearTimeout(setUmsg.t);setUmsg.t=setTimeout(()=>m.hidden=true,3500)}
+$('uok').onclick=async()=>{const v=$('uin').value.replace(/[\x00-\x1f]/g,'').trim().slice(0,14);
  if(!v){if(uname){uedit=false;renderU()}else{$('uin').focus();sfx('nope')}return}
- uname=v;uedit=false;try{localStorage.setItem('kekeName',uname)}catch(e){}renderU();sfx('ding')};
+ if(v===uname){uedit=false;renderU();return}
+ $('uok').disabled=true;const st=await claim(v);$('uok').disabled=false;
+ if(st==='taken'){setUmsg('Este nombre ya está en uso');sfx('nope');return}
+ if(st==='err'){setUmsg('No se pudo verificar el nombre. Revisa tu conexión.');sfx('nope');return}
+ const old=uname;uname=v;uedit=false;try{localStorage.setItem('kekeName',uname)}catch(e){}renderU();sfx('ding');
+ if(API&&old&&keyOf(old)!==keyOf(v)){try{const ok=encodeURIComponent(keyOf(old)),c=await rtdb('players/'+ok);if(c&&c.pid===myPid())await rtdb('players/'+ok,'DELETE')}catch(e){}}};
 $('ushow').onclick=()=>{uedit=true;$('uin').value=uname;renderU();$('uin').focus();$('uin').select()};
 $('uin').onkeydown=e=>{if(e.key==='Enter')$('uok').click()};
 renderU();
+if(uname&&API)claim(uname).then(st=>{if(st==='taken'){uname='';try{localStorage.removeItem('kekeName')}catch(e){}renderU();setUmsg('Ese nombre ya está en uso, elige otro')}});
+async function openTop(){hide('menu');show('top');const L=$('tl'),M=$('tmsg');L.textContent='';
+ M.textContent=API?'Cargando…':'La tabla global todavía no está activada: solo ves tu puntaje.';
+ let rows=[];
+ if(API){try{let d;try{d=await rtdb('players','GET',null,'?orderBy=%22score%22&limitToLast=20')}catch(e){d=await rtdb('players')}
+   rows=Object.values(d||{}).filter(x=>x&&typeof x.score==='number'&&x.n).sort((a,b)=>b.score-a.score).slice(0,20)}
+  catch(e){M.textContent='No se pudo cargar la tabla. Revisa tu conexión.';return}}
+ else if(uname)rows=[{n:uname,score:best,pid:myPid()}];
+ const me=myPid();
+ rows.forEach((r,i)=>{const d=document.createElement('div');d.className='trow'+(r.pid===me?' me':'');
+  const a=document.createElement('b'),n=document.createElement('span'),s=document.createElement('em');
+  a.textContent=['🥇','🥈','🥉'][i]||(i+1)+'.';n.textContent=String(r.n).slice(0,14);s.textContent=r.score;d.append(a,n,s);L.append(d)});
+ if(API)M.textContent=rows.length?(uname?'':'Pon tu Username para aparecer en la tabla.'):'Aún no hay puntajes.';
+ else if(!uname)M.textContent='Pon tu Username para aparecer en la tabla.'}
+$('btop').onclick=openTop;
+$('tb').onclick=()=>{hide('top');show('menu')};
 $('tomenu').onclick=()=>{hide('over');show('menu');state='menu';objs=[];jh=0;vy=0;slide=0;px=0};
 function renderM(){
  $('ml').innerHTML=MS.map((n,i)=>{
@@ -454,6 +503,11 @@ function renderS(){
  $('sl').innerHTML=S.map(s=>'<div class="sk"><canvas width="120" height="140" data-s="'+s[0]+'"></canvas><b>'+s[1]+'</b><button class="sec" data-p="'+s[0]+'" '+(s[2]?'':'disabled')+'>'+(!s[2]?'Bloqueada':skin===s[0]?'Elegida':'Elegir')+'</button></div>').join('');
  document.querySelectorAll('#sl canvas').forEach(c=>{const m=c.getContext('2d'),o=ctx,sk=skin;ctx=m;skin=c.dataset.s;ctx.translate(60,128);cake(0,0,false,0);ctx=o;skin=sk});
  $('sl').querySelectorAll('button:not([disabled])').forEach(b=>b.onclick=()=>{skin=b.dataset.p;sv();renderS()})}
+if(/^https?:/.test(location.protocol)){(async()=>{try{
+ const cur=document.querySelector('meta[name=build]').content,r=await fetch(location.pathname+'?c='+Date.now(),{cache:'no-store'});
+ const rd=r.body.getReader(),{value}=await rd.read();rd.cancel();
+ const m=new TextDecoder().decode(value).match(/name="build" content="(\w+)"/);
+ if(m&&m[1]!==cur&&!sessionStorage.getItem('kekeR')){sessionStorage.setItem('kekeR','1');location.replace(location.pathname+'?v='+m[1])}}catch(e){}})()}
 </script>
 </body>
 </html>
